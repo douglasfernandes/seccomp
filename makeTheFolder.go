@@ -12,6 +12,18 @@ https://blog.heroku.com/applying-seccomp-filters-on-go-binaries?c=&utm_campaign=
 */
 
 func main() {
+	//newDir()
+	testeVariaveis()
+}
+
+func testeVariaveis() {
+	var1 := "123"
+	var2 := "456"
+	var3 := var1 + var2
+	fmt.Println(var3)
+}
+
+func newDir() {
 	var syscalls = []string{
 		"rt_sigaction", "mkdirat", "clone", "mmap", "readlinkat", "futex", "rt_sigprocmask",
 		"mprotect", "write", "sigaltstack", "gettid", "read", "open", "close", "fstat", "munmap",
@@ -24,7 +36,9 @@ func main() {
 	} else {
 		fmt.Printf("I just created a file\n")
 	}
+
 	err2 := syscall.Exec("/bin/ls", []string{"ls", "-l"}, nil)
+
 	if err2 != nil {
 		panic(err2)
 	} else {
